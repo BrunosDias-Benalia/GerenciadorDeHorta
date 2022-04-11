@@ -1,0 +1,4 @@
+Data do Plantio:25/05/2222 Tipo de planta: Morango Quantidade plantada: 5.
+----------------------
+Data do Plantio:25/20/1950 Tipo de planta: Alface Quantidade plantada: 10.
+----------------------
