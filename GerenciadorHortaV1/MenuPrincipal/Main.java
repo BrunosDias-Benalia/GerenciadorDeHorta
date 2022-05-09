@@ -2,7 +2,7 @@ package MenuPrincipal;
 
 
 
-import Services.criardiretoriosdelogs;
+import Services.Diretorios;
 import Telas.Menus;
 
 
@@ -12,8 +12,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		criardiretoriosdelogs.criardiretórios();
-		Menus.MenuPrincipal();
+		Diretorios.DirLogs(); //verifica se há um diretório de logs e o cria caso não tenha.
+		Menus.MenuPrincipal(); //inicia menu principal da aplicação
 	}
 		
 }

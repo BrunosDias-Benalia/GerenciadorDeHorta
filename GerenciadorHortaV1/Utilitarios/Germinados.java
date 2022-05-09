@@ -44,14 +44,14 @@ public class Germinados {
 		}
 	}
 	
-	public Germinados(Scanner ler)
+	public Germinados(Scanner ler)// contrutor sem argumentos, recebe a variavel de scanner para evitar bugs
 	{
 		Date hoje = new Date();
 		boolean valorInvalido;
 		SimpleDateFormat dataPlantio = new SimpleDateFormat("dd/MM/yyyy");
-		do {
+		do { //Estrutura de repetição para inserção de valores de datas validos
 			try {
-				System.out.println("Coloque a data do plantio(formado dd/mm/ano):");
+				System.out.println("Coloque a data do plantio(formato: Dia(dd)/Mês(mm)/Ano(yyyy)):");
 				this.data = dataPlantio.parse(ler.next());
 				if(this.data.after(hoje)) 
 				{
@@ -71,7 +71,7 @@ public class Germinados {
 		}while(valorInvalido);
 		System.out.println("Coloque o tipo de planta:");
 		this.TipoPlanta = ler.next();
-		do {
+		do {//Estrutura de repetição para verificar se o valor é numérico
 			try 
 			{
 				System.out.println("Coloque a quantidade germinada:");
@@ -93,7 +93,7 @@ public class Germinados {
 		this.QuantGerminado = QuantPlantado;		
 	}
 	
-	public String toString()
+	public String toString() // transforma o objeto em string para escrever dados na tela
 	{
 		return "Data do Plantio:" + this.data
 	+" Tipo de planta: " + this.TipoPlanta

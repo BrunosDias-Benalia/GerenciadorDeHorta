@@ -19,6 +19,8 @@ public class Plantio {
 	private String TipoPlanta;
 	private int QuantPlantado;
 	private static Date hoje = new Date();
+	private static SimpleDateFormat ano = new SimpleDateFormat("yyyy");
+	private static SimpleDateFormat mascaradedata = new SimpleDateFormat("dd/MM/yyyy");
 	
 	static void GerarLogs(List<Plantio> plantios)
 	{
@@ -44,17 +46,21 @@ public class Plantio {
 			GerarLogs(Menus.plantios);
 		}
 	
-	public Plantio(Scanner ler) 
+	public Plantio(Scanner ler) //Contrutor sem argumentos, recebe a variavel de scanner para evitar bugs
 	{
 		boolean valorInvalido;
 		SimpleDateFormat dataPlantio = new SimpleDateFormat("dd/MM/yyyy");
 		do {
 			try {
-				System.out.println("Coloque a data do plantio(formado dd/mm/ano):");
+				System.out.println("Coloque a data do plantio(formato: Dia(dd)/Mês(mm)/Ano(yyyy)):");
 				this.data = dataPlantio.parse(ler.next());
 				if(this.data.after(hoje)) 
 				{
 					throw new IllegalArgumentException("Datas futuras não são permitidas,colocar nova data!");
+				}
+				if(Integer.parseInt(ano.format(this.data)) < (Integer.parseInt(ano.format(hoje))-3))
+				{
+					throw new IllegalArgumentException("Plantios de mais de 3 anos não são validos");
 				}
 				valorInvalido = false;
 			}
@@ -70,7 +76,7 @@ public class Plantio {
 		}while(valorInvalido);
 		System.out.println("Coloque o tipo de planta:");
 		this.TipoPlanta = ler.next();
-		do {
+		do {//Estrutura de repetição para verificar se o valor é numérico
 			try 
 			{
 				System.out.println("Coloque a quantidade plantada:");
@@ -92,9 +98,9 @@ public class Plantio {
 		this.QuantPlantado = QuantPlantado;		
 	}
 	
-	public String toString()
+	public String toString() // transforma o objeto em string para escrever dados na tela
 	{
-		return "Data do Plantio:" + this.data 
+		return "Data do Plantio: " + Plantio.mascaradedata.format(this.data)
 	+" Tipo de planta: " + this.TipoPlanta
 	+ " Quantidade plantada: " + this.QuantPlantado +".";
 	}

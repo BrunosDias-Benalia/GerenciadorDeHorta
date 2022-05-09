@@ -31,18 +31,20 @@ public class Menus {
 				escolha = op.nextInt();
 				valorInvalido = false;
 			}
-			catch (InputMismatchException e) {
+			catch (InputMismatchException e) { //Caso o valor digitado não seja um número
 				System.out.println("Valor invalido");
 				op.next();
 				valorInvalido = true;
 			}
-			}while(valorInvalido);
+			}while(valorInvalido);//Rotina para caso o usuário digite um caracter não numérico
 			switch (escolha) {
 			case 1:
 				Plantio.MenuPlantio(op);
+				System.out.println("Registrado com sucesso");
 				break;
 			case 2:
 				Germinados.MenuGerminados(op);
+				System.out.println("Registrado com sucesso");
 				break;
 			case 3:
 				ligado = false;
